@@ -1,0 +1,43 @@
+// Write a function countWords() to count the numbers of words in a string.
+
+A word is defined as text separated by space(' ') or multiple spaces.
+
+The function will receive a string as input and return the numbers of words in this string. 
+
+import java.util.Scanner;
+
+class Result
+{
+  static final int OUT = 0;
+    static final int IN = 1;
+    static int countWords(String str)
+    {
+        int state = OUT;
+        int wc = 0; 
+        int i = 0;
+        while (i < str.length())
+        {
+            if (str.charAt(i) == ' ' || str.charAt(i) == '\n'
+                    || str.charAt(i) == '\t')
+                state = OUT;
+            else if (state == OUT)
+            {
+                state = IN;
+                ++wc;
+            }
+            ++i;
+        }
+        return wc;
+    }
+}
+
+class Main
+{
+  public static void main(String[] args)
+  {
+    String t;
+    Scanner s=new Scanner(System.in);
+    t=s.nextLine();
+    System.out.println(Result.countWords(t));
+  }
+}
